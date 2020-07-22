@@ -147,14 +147,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'nofees202@gmail.com'
-EMAIL_HOST_PASSWORD = 'Rotondwa2+'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 if DEBUG:
     # test keys
-    STRIPE_PUBLISHABLE_KEY = 'pk_test_51GxsxUJSMWtivThyF8AmTavuuthGuJcTsfoCBVcBeyZCuTXbe8nUHv9msLvdKcCjpZqVTi6LFINhc2MM6GIatHsy00nhAUwU0d'
-    STRIPE_SECRET_KEY = 'sk_test_51GxsxUJSMWtivThyB17edEYOsAm8iqlFsD5lKwcDMVWssJPJm7q1F57x1xY4ZmpJvUN68LgIOeAGVPkr2sAwoVHh00S8w3a70M'
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
 else:
     # live keys
-    STRIPE_PUBLISHABLE_KEY = 'pk_test_51GxsxUJSMWtivThyF8AmTavuuthGuJcTsfoCBVcBeyZCuTXbe8nUHv9msLvdKcCjpZqVTi6LFINhc2MM6GIatHsy00nhAUwU0d'
-    STRIPE_SECRET_KEY = 'sk_test_51GxsxUJSMWtivThyB17edEYOsAm8iqlFsD5lKwcDMVWssJPJm7q1F57x1xY4ZmpJvUN68LgIOeAGVPkr2sAwoVHh00S8w3a70M'
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
