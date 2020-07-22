@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% load static %} {% block content %} 
+<section class="banner-area event-banner" style="background-image: url({{ banner.image.url }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+                    <h1><strong>Our event list</strong></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/.banner-area-->
+<div class="main-content pdt40  event-list-content">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Event <strong>list</strong></h2>
+        </div>
+        <div> 
+        {% if events %}
+            {% for event in events %}
+                <div class="upcoming-event">
+                    <div class="fornt-part">
+                    <div class="date">{{ event.date }}</div>
+                    <div class="singer">{{ event.title }}</div>
+                    <div class="venue">{{ event.venue }}</div>
+                    <div class="detail text-right">
+                        <a href="{% url 'event-detail' slug=event.slug %}" class="musica-button-two">details</a>
+                    </div>
+                    </div>
+                    <div class="back-part">
+                    <div class="event-counter">
+                        <div
+                        id="event-counter-one"
+                        class="musica-counter-active"
+                        data-value-year="2021"
+                        data-value-month="1"
+                        data-value-day="76"
+                        data-value-zone="+10"
+                        ></div>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        <div class="upcoming-event">
+            <p>No Event</p>
+        </div>
+      {% endif %}
+            
+        </div>
+    </div>
+</div>
+<div class="musica-pagination">
+    {% if page_obj.has_previous %}
+            <ul class="page-numbers">
+            {% if page_obj.number > 2 %}
+                <li><a href="?page=1"><i class="page-numbers current" aria-hidden="true"></i></a> </li>
+                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+            {% else %}
+                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+            {% endif %}    
+            </ul>
+            {% endif %}
+            
+            <ul class="page-numbers">
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-numbers"><a  href="?page={{ num }}">{{ num }}</a></li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-numbers"><a  href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.number == 1 %}
+                <li class="page-numbers current"><a href="#">of</a></li>
+            {% else %}
+                <li class="page-numbers current"><a href="#">...</a></li>
+            {% endif %}
+                <li class="page-numbers current"><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+            </ul>
+            {% if page_obj.has_next %}
+            <ul class="page_nav d-flex flex-row">
+            <li class="next page-numbers"><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li> 
+            <li> <a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+        </ul>
+        {% endif %}
+       
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block content %} 
+<section class="banner-area blog-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+                    <h1>Our <strong>Blog</strong></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/.banner-area-->
+<div class="main-content pdt40 pdb90">
+    <div class="container">
+        <div class="row">      
+            {% for new in news %}
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="blog-post">
+                <div class="gradent-overlay"></div>
+                <img src="{{ new.image.url }}" alt="news" class="img-responsive" />
+                <div class="post-date base-gradient-bg"><span>{{ new.date|date:'j' }}</span>{{ new.date|date:'M' }}</div>
+                <h3><a href="{% url 'news-detail' slug=new.slug %}">{{ new.title }}</a></h3>
+              </div>
+              <!--/.blog-post-->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
