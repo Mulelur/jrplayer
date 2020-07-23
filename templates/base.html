@@ -55,8 +55,8 @@
       </div>
     </div>
    <header>
-    <nav class="navbar navbar-expand-md navigation sidebar-left block" style="z-index: 100;">
-      <div class="container py-4"><button class="navbar-toggler" type="button"><span><em style="font-size: 20px" class="icon ni ni-menu"></em></span></button> <a href="#main" class="navbar-brand"><img class="logo" src="{% static 'home/img/logo/jr--logo (2).png' %}" class="logo logo-sticky"/></a>
+    <nav class="navbar navbar-expand-md navigation sidebar-left block " style="z-index: 100;">
+      <div class="container"><button class="navbar-toggler" type="button"><span><em style="font-size: 20px" class="icon ni ni-menu"></em></span></button> <a href="#main" class="navbar-brand"><img class="logo" src="{% static 'home/img/logo/jr--logo (2).png' %}" class="logo logo-sticky"/></a>
           <div class="collapse navbar-collapse ml-auto">
               <div class="sidebar-brand"><a href="#main"></a></div>
               <ul class="nav navbar-nav mr-auto">
@@ -65,7 +65,7 @@
                   <li class="nav-item"><a class="nav-link" href="javascript:;">Download</a></li>
                   <li class="nav-item"><a class="nav-link" href="javascript:;">Blog</a></li>
               </ul>
-              <nav class="nav navbar-nav ml-md-auto justify-content-center mt-4 mt-md-0 flex-row"><a class="btn btn-rounded btn-outline-danger mr-3 px-3" href="javascript:;" target="_blank"><em class="icon ni ni-signin"></em><span class="d-md-none d-lg-inline">Login</span> </a><a class="btn btn-rounded btn-danger px-3" href="javascript:;" target="_blank"><em class="icon ni ni-user-add-fill"></em><span class="d-md-none d-lg-inline">Signup</span></a></nav>
+              <nav class="nav navbar-nav ml-md-auto justify-content-center mt-4 mt-md-0 flex-row"><a class="btn btn-rounded btn-outline-danger mr-3 px-3" href="" target="_blank"><em class="icon ni ni-signin"></em><span class="d-md-none d-lg-inline">Login</span> </a><a class="btn btn-rounded btn-danger px-3" href="javascript:;" target="_blank"><em class="icon ni ni-user-add-fill"></em><span class="d-md-none d-lg-inline">Signup</span></a></nav>
           </div>
       </div>
   </nav><!-- ./Main navigation -->
@@ -76,7 +76,7 @@
       <div class="container">
         <div class="footer-logo">
           <a href="{% url 'home' %}"
-            ><img height="80" src="{% static 'img/logo/jr--logo (4).png' %}" alt="logo"
+            ><img height="90" src="{% static 'img/logo/jr--logo (4).png' %}" alt="logo"
           /></a>
         </div>
         <div class="footer-menu">
@@ -99,16 +99,17 @@
         </div>
       </div>
     </footer>
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'js/plugins/jquery.animatebar.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/03.demo.js' %}"></script><!-- endinject -->
+
+
     <!-- == jQuery Librery == -->
     <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
     <!-- == Bootsrap js File == -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- == Jquery Countdown == -->
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    
+
     <script src="{% static 'js/jquery.plugin.js' %}"></script>
     <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
     <!-- == Magnific Popup == -->
@@ -118,6 +119,8 @@
     <!-- == Jquery Player == -->
     <script src="{% static 'js/jquery.jplayer.min.js' %}"></script>
     <script src="{% static 'js/jplayer.playlist.min.js' %}"></script>
+
+    
     <script
       type="text/javascript"
       src="{% static 'js/audio-playlist.js' %}"
@@ -155,12 +158,16 @@
       type="text/javascript"
       src="{% static 'js/revolution-active.js' %}"
     ></script>
+    
     <!-- == Custom Js == -->
     <script src="{% static 'js/custom.js' %}"></script>
 
     <script src="{% static 'lightbox/js/aos.js' %}"></script>
     <script src="{% static 'lightbox/js/site.js' %}"></script>
-
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/plugins/jquery.animatebar.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/03.demo.js' %}"></script><!-- endinject -->
     
   </body>
 </html>

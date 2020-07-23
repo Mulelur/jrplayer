@@ -25,7 +25,7 @@ SECRET_KEY = 'j-xcii3-dfucl@pk86=9w5e-(=1i)h1u)2o5)xs4cd)l59)r1e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['45.33.55.212','0.0.0.0','127.0.0.1']
+ALLOWED_HOSTS = ['45.33.55.212','0.0.0.0','127.0.0.1','www.jrplayerentertainment.com']
 
 
 # Application definition
