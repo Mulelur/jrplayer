@@ -17,11 +17,10 @@
         <div class="upcoming-event">
             <div class="fornt-part">
             <div class="date">Title: {{ s.title }}</div>
-            <div class="date">Artist: {{ s.artist }}</div>
             </div>
             <div class="back-part">
             <div class="event-counter">
-                <audio src="{{ s.song.url }}" controls><source src="{{ s.song.url }}" type="audio/mp3">
+                <audio src="{{ s.music.url }}" controls><source src="{{ s.music.url }}" type="audio/mp3">
                     <h1>{{ s.title }}</h1>
                 </audio>
             </div>
