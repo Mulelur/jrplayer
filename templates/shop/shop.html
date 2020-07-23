@@ -28,42 +28,43 @@
                 </div>
                 {% endfor %}
             </div>
-            
-                <div class="musica-pagination">
+            <div>
                 {% if page_obj.has_previous %}
-                        <ul class="page-numbers">
-                        {% if page_obj.number > 2 %}
-                            <li><a href="?page=1"><i class="page-numbers current" aria-hidden="true"></i></a> </li>
-                            <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+                <ul class="pagination">
+                    {% if page_obj.number > 2 %}
+                    <li class="page-item"><a class="page-link" href="?page=1">Prev</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">1</a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Next</a></li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+                {% endif %}
+    
+                <ul class="pagination">
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                         {% else %}
-                            <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
-                        {% endif %}    
-                        </ul>
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                         {% endif %}
-                        
-                        <ul class="page-numbers">
-                        {% for num in page_obj.paginator.page_range %}
-                            {% if page_obj.number == num %}
-                                <li class="page-numbers"><a  href="?page={{ num }}">{{ num }}</a></li>
-                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <li class="page-numbers"><a  href="?page={{ num }}">{{ num }}</a></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if page_obj.number == 1 %}
-                            <li class="page-numbers current"><a href="#">of</a></li>
-                        {% else %}
-                            <li class="page-numbers current"><a href="#">...</a></li>
-                        {% endif %}
-                            <li class="page-numbers current"><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
-                        </ul>
-                        {% if page_obj.has_next %}
-                        <ul class="page_nav d-flex flex-row">
+                    {% endfor %}
+    
+                    {% if page_obj.number == 1 %}
+                    <li class="page-item"><a href="#">of</a></li>
+                    {% else %}
+                    <li class="page-item"><a href="#">...</a></li>
+                    {% endif %}
+                    <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                </ul>
+                {% if page_obj.has_next %}
+                    <ul class="page_nav d-flex flex-row">
                         <li class="next page-numbers"><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li> 
                         <li> <a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
                     </ul>
-                    {% endif %}
-                   
-                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% endblock %}
