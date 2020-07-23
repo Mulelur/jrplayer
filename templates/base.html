@@ -54,33 +54,69 @@
         </div>
       </div>
     </div>
-   <header>
-    <nav class="navbar navbar-expand-md navigation sidebar-left block " style="z-index: 100;">
-      <div class="container"><button class="navbar-toggler" type="button"><span><em style="font-size: 20px" class="icon ni ni-menu"></em></span></button> <a href="#main" class="navbar-brand"><img class="logo" src="{% static 'home/img/logo/jr--logo (2).png' %}" class="logo logo-sticky"/></a>
-          <div class="collapse navbar-collapse ml-auto">
-              <div class="sidebar-brand"><a href="#main"></a></div>
-              <ul class="nav navbar-nav mr-auto">
-                  <li class="nav-item"><a  href="{% url 'home' %}">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'event-list' %}">Event</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">news</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'music' %}">Music</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
-
-              </ul>
-              <nav class="nav navbar-nav ml-md-auto justify-content-center mt-4 mt-md-0 flex-row">
-                {% if user.is_authenticated %}
-                <a class="btn btn-rounded btn-outline-danger mr-3 px-3" href="{% url 'login' %}" target="_blank"><em class="icon ni ni-signout"></em><span class="d-md-none d-lg-inline">Logout</span> </a>
-                <a class="btn btn-rounded pl-3" href="{% url 'login' %}" target="_blank"><span class="d-md-none d-lg-inline"><em style="font-size: 30px;color: #f44b06;" class="icon ni ni-user-circle-fill"></em></span> </a>
-                <a class="btn btn-rounded  " href="{% url 'login' %}" target="_blank"><span class="d-md-none d-lg-inline"><em style="font-size: 30px;color: #f44b06;" class="icon ni ni-user-circle-fill"></em></span> </a>
-                {% else %}
-                <a class="btn btn-rounded btn-outline-danger mr-3 px-3" href="{% url 'login' %}" target="_blank"><em class="icon ni ni-signin"></em><span class="d-md-none d-lg-inline">Login</span> </a>
-                <a class="btn btn-rounded btn-danger px-3" href="{% url 'register' %}" target="_blank"><em class="icon ni ni-user-add-fill"></em><span class="d-md-none d-lg-inline">Signup</span></a></nav>
-                {% endif %}
-              </div>
+    <header class="musica-header home-page-header">
+      <div class="menu-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="logo">
+                <a href="{% url 'home' %}" class="logo-brand">
+                  <img
+                    src="{% static 'home/img/logo/jr--logo (2).png' %}"
+                    class="img-responsive"
+                    alt="logo"
+                    style="align-self: center;"
+                  />
+                </a>
+              </div>  
+              </span>
+              <nav id="easy-menu">
+                <div style="padding-top: 11px;" class="button">
+                  <em style="margin-top: 20px;" class="icon ni ni-menu"></em>
+                </div>
+                <ul class="menu-list">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li>
+                    <a href="{% url 'event-list' %}">Events</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'album' %}">album</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'news' %}">news</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'music' %}">Music</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'gallery' %}">gallery</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'shop' %}">shop</a>
+                  </li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  <li>
+                    <span class="shop-icon">
+                      <a href="{% url 'order_summary' %}"><em style="font-size: 24px;margin-bottom: 12px;" class="icon ni ni-bag"></em><span class="shop-count base-gradient-bg">1 </span></a>
+                    </span>
+                    <span class="shop-icon">
+                      <a href="{% url 'my_account' %}"><em style="font-size: 24px;" class="icon ni ni-user-circle"></em></a>
+                    </span>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{% url 'login' %}">Log-In</a></li>
+                  <li><a href="{% url 'login' %}">Register</a></li>
+                  {% endif %}
+                </ul>
+              </nav>
+              
+            </div>
+          </div>
+        </div>
       </div>
-  </nav><!-- ./Main navigation -->
+      <!--/.menu-area-->
    </header>
     {% block content %}{% endblock %}
 
