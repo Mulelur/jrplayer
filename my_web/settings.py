@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'my_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydb',
-        'USER': 'myuser',
-        'PASSWORD': 'mypass',
+        'NAME': 'jrdb',
+        'USER': 'rotonda',
+        'PASSWORD': 'Rotondwa2+',
         'HOST': 'localhost',
         'PORT': '5432',
     }
