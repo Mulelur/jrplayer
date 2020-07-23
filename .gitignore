@@ -100,7 +100,7 @@ ENV/
 # mkdocs documentation
 /site
 settings/
-
+my_web/settings/
 # mypy
 .mypy_cache/
 
