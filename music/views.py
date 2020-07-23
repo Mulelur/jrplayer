@@ -14,7 +14,7 @@ def music_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     template = 'music/music-list.html'
-    context = {'order': existing_order,'page_obj': page_obj,'banner': banner}
+    context = {'order': existing_order,'page_obj': page_obj,'banner': banner, 'music': music}
     return render(request, template, context)
 
 def music_detail(request):
