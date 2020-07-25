@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %} {% block content %} 
+    <section class="banner-area shop-detail-banner" style="background-image: url({{ banner.image.url }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-title">
+                        <h1><strong>Shop</strong></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/.banner-area-->
+    {% if shop %}
+    <div class="main-content pdt40 pdb90">
+        <div class="container">
+            <div class="shop-detail-paernt">
+                <div class="shop-detail">
+                    <div class="shop-item">
+                        <div class="image">
+                            <img src="{{ shop.image.url }}" alt="shop" class="img-responsive">
+                        </div>
+                    </div><!--/.shop-item-->
+                    <div class="shop-detail-text">
+                        <div>
+                            <h3>{{ shop.title }}</h3>
+                            <div class="price">R{{ shop.price }}</div>
+                            <p>{{ shop.descirption }}</p>
+                            <div class="item-quantity">
+                                <a href="{% url 'add_to_cart' item_id=shop.id %}" class="musica-button base-gradient-bg small-button">ADD TO CART</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shop-tab">
+                <!-- Nav tabs -->
+                 <ul class="nav nav-tabs" role="tablist">
+                   <li class="active"><a href="#description" role="tab" data-toggle="tab">Description</a></li>
+                   
+                 </ul>
+
+                 <!-- Tab panes -->
+                 <div class="tab-content">
+                   <div role="tabpanel" class="tab-pane active" id="description">
+                       <p>{{ shop.descirption }}</p>
+                   </div>
+                 </div>
+            </div>
+            <div class="related-product">
+                <div class="section-heading">
+                    <h2>Related<strong>Product</strong></h2>
+                </div>
+                <div class="row row-eq-height">
+                    {% for shop in related %}
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="shop-item">
+                            <div class="image">
+                                <img src="{{ shop.image.url }}" alt="shop" class="img-responsive">
+                            </div>
+                            <div class="text">
+                                <span class="item-name">{{ shop.title }}</span>
+                                <div class="price">R{{ shop.price }}</div>
+                            </div>
+                            <div class="item-quantity">
+                                <a href="{% url 'add_to_cart' item_id=shop.id %}" class="musica-button base-gradient-bg small-button">ADD TO CART</a>
+                            </div>
+                        </div><!--/.shop-item-->
+                    </div>
+                    {% endfor %}    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}    

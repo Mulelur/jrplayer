@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="banner-area album-banner" style="background-image: url({{ banner.image.url }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+					<h1>Cart</h1>
+					{% include 'messages.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/.banner-area-->
+<div class="main-content pdt40 pdb100" >
+	<div class="container">
+		<div id="primary" class="content-area">
+			<div>
+				<table class="table table-borderless">
+					<thead>
+						<tr>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">&nbsp;</th>
+						<th scope="col">Product</th>
+						<th scope="col">Price</th>
+						<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in order.get_cart_items %}	
+						<tr>
+						<th scope="row">{{ forloop.counter }}</th>
+						<td><a  href="{% url 'delete_item' item_id=item.id %}"><span><em style="font-size: 10px;" class="icon ni ni-cross"></em></span></a></td>
+						<td><a href="{% url 'shop-detail' slug=item.product.slug %}"><img width="50" height="60" src="{{ item.product.image.url }}" alt=""></a></td>
+						<td><a href="{% url 'shop-detail' slug=item.product.slug %}">{{ item.product.title }}</a></td>
+						<td><span class="amount">${{ item.product.price }}</span></td>
+						</tr>
+						{% empty %}
+							<tr>
+							<td> You have not added any items yet.</td>
+							</tr>
+						{% endfor %}
+						<tr>
+						<td class="actions" colspan="6">
+							<div style="text-align: center; margin-bottom: 20px;">
+								<a href="{% url 'shop' %}" class="btn btn-success">
+									{% if order %}Continue Shopping{% else %}Add Items to Cart {% endif %}
+								</a> 
+							</div>
+						</td>
+					</tr>
+					</tbody>
+					</table>
+			</div>
+			<div class="cart-collaterals">
+				<!-- Cart Totals -->
+				<div class="cart_totals ">
+
+					<h2>Cart Totals</h2>
+
+					<table class="shop_table shop_table_responsive">
+
+						<tbody>
+							<tr class="cart-subtotal">
+								<th>Subtotal</th>
+								<td data-title="Subtotal"><span class="amount">${{ order.get_cart_total }}</span></td>
+							</tr>
+							<tr class="shipping">
+								<th>Shipping</th>
+								<td data-title="Shipping">Flat Rate: <span class="amount">$15</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]">
+								</td>
+							</tr>
+
+							<tr class="order-total">
+								<th>Total</th>
+								<td data-title="Total"><strong><span class="amount">${{ order.get_cart_total_shipping }}</span></strong> </td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div>
+
+						<a class="btn btn-primary" href="{% url 'checkout' %}">Proceed to Checkout</a>
+					</div>
+				</div>
+			</div><!-- #primary -->
+		</div><!-- .container -->
+	</div>
+</div>
+
+ {% endblock %}
+ {% block scripts %}
+  {{ block.super }}
+  <script>
+  function confirm_delete(){
+    return confirm("Do you want to remove this item from cart?");
+  }
+  </script>
+{% endblock scripts %}
+
