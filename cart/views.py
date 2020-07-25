@@ -8,6 +8,7 @@ from .models import OrderItem, Order, Transaction
 from .extras import generate_order_id
 from .countrys import country, options
 import stripe
+from shop.models import Shop
 from home.models import Banner
 
 import datetime
@@ -58,7 +59,7 @@ def add_to_cart(request, **kwargs):
 
     # show confirmation message and redirect back to the same page
     messages.info(request, "item added to cart")
-    return redirect(reverse('shop-list'))
+    return redirect(reverse('shop'))
 
 
 
@@ -102,7 +103,6 @@ def checkout(request, **kwargs):
     context = {
         'order': existing_order,
         'STRIPE_PUBLISHABLE_KEY': publishKey,
-        'categories': category
     }
 
     return render(request, 'cart/checkout.html', context)

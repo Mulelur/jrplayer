@@ -17,22 +17,13 @@
             <div class="mx-auto">
                 <div class="swiper-container" data-sw-pagination="false" data-sw-nav-arrows="false" data-sw-navigation="#sw-nav-1" data-sw-navigation-active="icon-lg" data-sw-active-selector="img">
                     <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide">
-                            {% for photo in gallery %}
-                            <img style="max-height: 100rem; margin: 5px;"  alt="" class="img-responsive" src="{{ photo.image.url }}">
-                            {% endfor %}
-                        </div>
-                        
-                      </div>
-                </div>
-                <nav id="sw-nav-1" class="nav nav-circle mt-4 align-items-center">
                     {% for photo in gallery %}
                     <div class="modal-popup grid-of-images" data-type="gallery" data-image='{"verticalFit": true}' data-zoom="300">
-                        <a class="nav-item nav-link" href="{{ photo.image.url }}" data-step="1" title="Some nice title to show"><img  alt="" class="rounded-circle shadow icon-lg icon-md mr-0" src="{{ photo.image.url }}"></a>
+                        <a class="nav-item nav-link" href="{{ photo.image.url }}" data-step="1" title="Some nice title to show"><img  alt="" class="shadow mr-0" src="{{ photo.image.url }}"></a>
                     </div>
                     {% endfor %}
                 </div>
+            </div>
         </div>
         <div>
             {% if page_obj.has_previous %}
@@ -43,30 +34,28 @@
                 {% else %}
                 <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Next</a></li>
                 {% endif %}
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
             {% endif %}
-
             <ul class="pagination">
                 {% for num in page_obj.paginator.page_range %}
                     {% if page_obj.number == num %}
-                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                     {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                     {% else %}
-                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.number == 1 %}
-                <li class="page-item"><a href="#">of</a></li>
+                    <li class="page-item"><a href="#">of</a></li>
                 {% else %}
-                <li class="page-item"><a href="#">...</a></li>
+                    <li class="page-item"><a href="#">...</a></li>
                 {% endif %}
-                <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                    <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
             </ul>
             {% if page_obj.has_next %}
                 <ul class="page_nav d-flex flex-row">
-                    <li class="next page-numbers"><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li> 
+                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li> 
                     <li> <a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
                 </ul>
             {% endif %}

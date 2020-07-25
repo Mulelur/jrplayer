@@ -11,7 +11,8 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('accont/', include('acconts.urls')),
     path('cart/', include('cart.urls')),
-    path('music/', include('music.urls'))
+    path('music/', include('music.urls')),
+    path('api/', include('api.urls'))
 ]
 
 if (settings.DEBUG):
