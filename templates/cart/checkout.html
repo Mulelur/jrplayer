@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-    {% include 'messages.html' %}
+{% if banner %}
+<section class="banner-area album-banner" style="background-image: url({{ banner.image.url }});" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-title">
+                    <h1><strong>{{ album.title }}</strong></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/.banner-area-->
+{%endif %}
+  {% include 'messages.html' %}
     <div class="container">
       <nav class="woocommerce-breadcrumb"><a href="{% url 'home' %}">Home</a><span class="delimiter"><img class="tondy-img" height="5" width="10" src="{% static 'png/next (3).png' %}"></span>Checkout</nav>
     <section>
