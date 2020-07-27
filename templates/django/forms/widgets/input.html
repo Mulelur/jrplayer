@@ -1,1 +1,8 @@
-<input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+{% extends 'admin/base(s).html' %}
+{% block content %}
+<div class="form-group">
+    <div class="form-control-wrap">
+        <input  type="{{ widget.type }}" {% if widget.type == 'text' or 'password' %} class="form-control" {% endif %} name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+    </div>
+</div>
+{% endblock %}
