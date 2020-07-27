@@ -20,7 +20,7 @@
                             <div class="col-xxl-6">
                                 <div class="nk-download app-{{ app.app_label }} module">
                                     <div class="data">
-                                        <div class="thumb"><img src="./images/icons/product-ee.svg" alt=""></div>
+                                        <div class="thumb"><img src="{% static 'images/icons/product-ee.svg' %}" alt=""></div>
                                         <div class="info">
                                             <h6 class="title" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}"><span class="name">{{ app.name }}</span></h6>
                                         </div>
@@ -34,7 +34,7 @@
                             <div class="col-xxl-6">
                                 <div class="nk-download">
                                     <div class="data">
-                                        <div class="thumb"><img src="./images/icons/product-pp.svg" alt=""></div>
+                                        <div class="thumb"><img src="{% static 'images/icons/product-pp.svg' %}" alt=""></div>
                                         <div class="info">
                                             {% if model.admin_url %}
                                             <h6 class="title"><span class="name"><a href="{{ model.admin_url }}">{{ model.name }}</a></span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>

@@ -47,10 +47,8 @@
             <label class="form-label" for="default-01">Username</label>
             <a class="link link-primary link-sm" tabindex="-1" href="#">Need Help?</a>
         </div>
-        <div class="form-control form-control-lg">
           {{ form.username.errors }}
           {{ form.username.label_tag }} {{ form.username }}
-        </div>
     </div><!-- .foem-group -->
     <div class="form-group">
         <div class="form-label-group">
@@ -64,11 +62,9 @@
             <a class="link link-primary link-sm" tabindex="-1" href="html/pages/auths/auth-reset.html">Forgot Code?</a>
         </div>
         <div class="form-control-wrap">
-          <div class="form-control form-control-lg">
             {{ form.password.errors }}
             {{ form.password.label_tag }} {{ form.password }}
             <input type="hidden" name="next" value="{{ next }}">
-          </div>
         </div>
     </div><!-- .foem-group -->
     <div class="form-group">
