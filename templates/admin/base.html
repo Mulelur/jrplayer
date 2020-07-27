@@ -123,20 +123,20 @@
                                                     </div>
                                                     <div class="user-info">
                                                         <span class="lead-text">{{ user.username }}</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="sub-text">{{ user.email }}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="html/ecommerce/user-profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/ecommerce/user-profile.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                                                    <li><a href="html/ecommerce/user-profile.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
+                                                    <li><a href="{% url 'user-profile' %}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
+                                                    <li><a href="{% url 'user-profile-settings' %}"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
+                                                    <li><a href="{% url 'user-profile' %}"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
                                                 </ul>
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <li><a href="{% url 'admin:logout' %}"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -230,5 +230,6 @@
 <!-- END Container -->
 <script src="{% static 'admin/assets/js/bundle.js' %}"></script>
 <script src="{% static 'admin/assets/js/scripts.js' %}"></script>
+<script src="{% static 'admin/assets/js/example-sweetalert.js' %}"></script>
 </body>
 </html>

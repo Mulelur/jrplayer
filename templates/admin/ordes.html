@@ -78,6 +78,8 @@
                                 </ul>
                             </div>
                         </div><!-- .nk-tb-item -->
+                        {% if order %}
+                        {% for order in orders %}
                         <div class="nk-tb-item">
                             <div class="nk-tb-col nk-tb-col-check">
                                 <div class="custom-control custom-control-sm custom-checkbox notext">
@@ -86,20 +88,20 @@
                                 </div>
                             </div>
                             <div class="nk-tb-col">
-                                <span class="tb-lead"><a href="#">#95954</a></span>
+                                <span class="tb-lead"><a href="#">#{{ order.ref_code }}</a></span>
                             </div>
                             <div class="nk-tb-col tb-col-md">
-                                <span class="tb-sub">Jun 4, 2020</span>
+                                <span class="tb-sub">{{ order.date_ordered }}</span>
                             </div>
                             <div class="nk-tb-col">
                                 <span class="dot bg-warning d-mb-none"></span>
                                 <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">On Hold</span>
                             </div>
                             <div class="nk-tb-col tb-col-sm">
-                                <span class="tb-sub">Arnold Armstrong</span>
+                                <span class="tb-sub">{{ order.owner }}</span>
                             </div>
                             <div class="nk-tb-col tb-col-md">
-                                <span class="tb-sub text-primary">3 Items</span>
+                                <span class="tb-sub text-primary">{{ order.items }} Items</span>
                             </div>
                             <div class="nk-tb-col">
                                 <span class="tb-lead">$ 249.75</span>
@@ -115,10 +117,8 @@
                                             <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#"><em class="icon ni ni-eye"></em><span>Order Details</span></a></li>
                                                     <li><a href="#"><em class="icon ni ni-truck"></em><span>Mark as Delivered</span></a></li>
                                                     <li><a href="#"><em class="icon ni ni-money"></em><span>Mark as Paid</span></a></li>
-                                                    <li><a href="#"><em class="icon ni ni-report-profit"></em><span>Send Invoice</span></a></li>
                                                     <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Order</span></a></li>
                                                 </ul>
                                             </div>
@@ -127,6 +127,11 @@
                                 </ul>
                             </div>
                         </div><!-- .nk-tb-item -->
+                        {% else %}
+                        <div class="nk-content " >
+                            <p>No Orders</p>
+                        </div>
+                        {% endif %}
 
                     </div><!-- .nk-tb-list -->
                     <div class="card">
