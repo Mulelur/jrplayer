@@ -22,3 +22,4 @@ post_save.connect(create_profile, sender=User)
 #         Compliment.objects.create(connection_with=instance)
 
 # post_save.connect(create_complument_product, sender=Product)             
+

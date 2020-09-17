@@ -1,6 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %} 
-<section class="banner-area event-banner" style="background-image: url({{ banner.image.url }});">
-    
+{% extends 'base(music).html' %}
+{% block content %}
+{% load static %}
+<!-- <section class="banner-area event-banner" style="background-image: url({{ banner.image.url }});">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -10,8 +11,93 @@
             </div>
         </div>
     </div>
-</section><!--/.banner-area-->
-<div class="main-content pdt40  event-detail-content">
+</section> -->
+<!--/.banner-area-->
+<section id="content" class="bg-color2 pt-5">
+
+            <div class="row topmargin-lg clearfix">
+                <div class="col-lg-6">
+                    <div class="heading-block border-0 dark" style="margin-bottom: 15px;">
+                        <h3>Hot Tracks</h3>
+                        <!-- <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> -->
+                    </div>
+
+                    <!-- Song Lists Items
+                    ============================================= -->
+                    <div class="songs-lists-wrap">
+
+                        <!-- List Items
+                        ============================================= -->
+                        <div class="songs-list">
+                            <div class="songs-number">01</div>
+                            <div class="songs-image track-image">
+                                <a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="track-list" data-track="demos/music/tracks/ibelieveinyou.mp3" data-poster="demos/music/tracks/poster-images/ibelieveinyou.jpg' %}" data-title="i Believe In You" data-singer="Lost European">
+                                    <img src="{% static 'music/ibelieveinyou.jpg' %}" alt="Image 1">
+                                </a>
+                            </div>
+                            <div class="songs-name track-name"><a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#">i Believe In You<br><span>Lost European</span></a></div>
+                            <div class="songs-time">03:28</div>
+                            <div class="songs-button"><a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="icon ni ni-more-v"></em></a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span><em class="icon ni ni-plus-circle"></em></span> Add to Queue</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span><em class="icon ni ni-play-circle"></em></span> Add to Playlist</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span><em class="icon ni ni-download-cloud"></em></span> Download Offline</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span><em class="icon ni ni-heart"></em></span> Love</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span><em class="icon ni ni-share"></em></span> Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="button bg-transparent font-weight-light nott float-right ml-0" style="color: #AAA; padding: 0 16px;">See More..</a>
+                </div>
+
+                <div class="w-100 d-block d-md-block d-lg-none topmargin-lg clear"></div>
+
+                <div class="col-lg-6">
+                    <div class="heading-block border-0 dark" style="margin-bottom: 15px;">
+                        <h3>Latest Tracks</h3>
+                        <!-- <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> -->
+                    </div>
+                    <div class="songs-lists-wrap">
+
+                        <!-- List Items
+                        ============================================= -->
+                        <div class="songs-list">
+                            <div class="songs-number">01</div>
+                            <div class="songs-image track-image">
+                                <a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="track-list" data-track="demos/music/tracks/searchin-lost-european.mp3" data-poster="demos/music/tracks/poster-images/searchin-lost-european.jpg' %}" data-title="Searchin Lost European" data-singer="Lost European">
+                                <img src="{% static 'music/searchin-lost-european.jpg' %}" alt="Image 1"><span><i class="icon-play"></i></span></a>
+                            </div>
+                            <div class="songs-name track-name"><a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#">Searchin Lost European<br><span>Lost European</span></a></div>
+                            <div class="songs-time">02:54</div>
+                            <div class="songs-button"><a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="icon ni ni-more-v"></em></a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span class="icon-line-plus"></span> Add to Queue</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span class="icon-music"></span> Add to Playlist</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span class="icon-line-cloud-download"></span> Download Offline</a>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span class="icon-line-heart"></span> Love</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="http://themes.semicolonweb.com/html/canvas/demo-music.html#"><span class="icon-line-share"></span> Share</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="http://themes.semicolonweb.com/html/canvas/demo-music.html#" class="button bg-transparent font-weight-light nott float-right ml-0" style="color: #AAA; padding: 0 16px;">See More..</a>
+                </div>
+            </div>
+
+          </section><!-- #content end -->
+{% endblock %}
+
+<!-- <div class="main-content pdt40  event-detail-content">
     <div class="container">
         {% for s in music %}
         <div class="upcoming-event">
@@ -67,9 +153,4 @@
         </div>
     </div>
 </div>
-
-          
-            
-        
-</div>
-{% endblock %}
+</div> -->

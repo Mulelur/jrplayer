@@ -1,0 +1,131 @@
+{% extends 'base(dashboard).html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="nk-block nk-block-lg">
+        <div class="nk-block-head">
+            <div class="nk-block-head-content">
+                <h4 class="title nk-block-title">Edit product</h4>
+                <div class="nk-block-des">
+                    <p>You can edit your product here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-head">
+                    <h5 class="card-title">Product Info</h5>
+                </div>
+                <form action="#">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label" for="full-name-1">Product Name</label>
+                                <div class="form-control-wrap">
+                                    {{ form.title }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label" for="email-address-1">Category</label>
+                                <div class="form-control-wrap">
+                                    {{ form.category }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label" for="default-06">Product Image Upload</label>
+                                <div class="form-control-wrap">
+                                    <div class="custom-file">
+                                        {{ form.image }}
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label" for="phone-no-1">Price</label>
+                                <div class="form-control-wrap">
+                                    {{ form.price }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-label" for="pay-amount-1">Descirption</label>
+                                <div class="form-control-wrap">
+                                    {{ form.descirption }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card card-preview">
+                                <div class="card-inner">
+                                    <h5 class="overline-title">Color Names</h5>
+                                    <div class="d-flex flex-wrap bg-white text-center fs-12px">
+                                        <div class="w-40px flex-fill p-2 bg-primary text-white">primary</div>
+                                        <div class="w-40px flex-fill p-2 bg-secondary text-white">secondary</div>
+                                        <div class="w-40px flex-fill p-2 bg-dark text-white">dark</div>
+                                        <div class="w-40px flex-fill p-2 bg-gray text-white">gray</div>
+                                        <div class="w-40px flex-fill p-2 bg-success text-white">success</div>
+                                        <div class="w-40px flex-fill p-2 bg-danger text-white">danger</div>
+                                        <div class="w-40px flex-fill p-2 bg-warning text-dark">warning</div>
+                                        <div class="w-40px flex-fill p-2 bg-info text-white">info</div>
+                                    </div>
+                                </div>
+                                <div class="card-inner">
+                                    <h5 class="overline-title">Additional Color</h5>
+                                    <div class="d-flex flex-wrap bg-white text-center fs-12px">
+                                        <div class="w-40px flex-fill p-2 bg-blue text-white">blue</div>
+                                        <div class="w-40px flex-fill p-2 bg-azure text-white">azure</div>
+                                        <div class="w-40px flex-fill p-2 bg-indigo text-white">indigo</div>
+                                        <div class="w-40px flex-fill p-2 bg-purple text-white">purple</div>
+                                        <div class="w-40px flex-fill p-2 bg-pink text-white">pink</div>
+                                        <div class="w-40px flex-fill p-2 bg-orange text-white">orange</div>
+                                        <div class="w-40px flex-fill p-2 bg-teal text-white">teal</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="default-07">Colors</label>
+                                <div class="form-control-wrap">
+                                    <div class="form-control-select-multiple">
+                                        <select class="custom-select" id="default-07" multiple>
+                                            <option value="option_select0">Color Option</option>
+                                            {% for color in product.color.all %}
+                                            <option value="">{{ color.color }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="default-07">Size</label>
+                                <div class="form-control-wrap">
+                                    <div class="form-control-select-multiple">
+                                        <select class="custom-select" id="default-07" multiple>
+                                            <option value="option_select0">Size Option</option>
+                                            {% for size in product.size.all %}
+                                            <option value="">{{ size.size }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- .nk-block -->
+</div>
+{% endblock %}

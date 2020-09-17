@@ -1,0 +1,21 @@
+{% extends 'dashboard/mail/base(mail).html' %}
+{% load crispy_forms_tags %}
+{% block mail %}
+<div class="nk-ibx-list" data-simplebar>
+    {% if  compose_form %}
+    <div class="col-lg-12">
+        <div class="container p-5">
+            <form action="#">
+                <div class="form-group">
+                    {{ compose_form|crispy }}
+                </div>
+            </form> 
+            <div class="form-group mt-2">
+                    <button class="btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-send"></em><span>send</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    {% endif %}
+{% endblock %}

@@ -9,8 +9,6 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now=True)
     date_ordered = models.DateTimeField(null=True)
 
-    def __str__(self):
-        return self.product.title
 
 
 class Order(models.Model):
@@ -34,12 +32,17 @@ class Order(models.Model):
 
 
 class Transaction(models.Model):
+    STATUS = (
+        ('On Hold', 'on_hold'),
+        ('Not Delivered', 'Not Delivered'),
+        ('Delivered', 'Delivered')
+    )
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    token = models.CharField(max_length=120)
     order_id = models.CharField(max_length=120)
-    amount = models.DecimalField(max_digits=100, decimal_places=2)
-    success = models.BooleanField(default=True)
+    total = models.DecimalField(max_digits=100, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+    status = models.CharField(max_length=100, choices=STATUS, default='Not Delivered')
+    purchesed_items = models.OneToOneField(Order, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.order_id
@@ -47,6 +50,8 @@ class Transaction(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
+    def get_id(self):
+        return self.order_id
 
 
 

@@ -1,0 +1,68 @@
+{% extends 'base(dashboard).html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="nk-block nk-block-lg">
+    <div class="nk-block-head">
+        <div class="nk-block-head-content">
+            <h4 class="title nk-block-title">Edit product</h4>
+            <div class="nk-block-des">
+                <p>You can edit your product here.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-head">
+                <h5 class="card-title">Product View</h5>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <img src="{{ product.image.url }}" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <div class="pb-3">
+                        <h6>Product Name: </h6> 
+                    </div>
+                    <h4>{{ product.title }}</h4>
+                    <div>
+                        <div>
+                            <h6>Category: </h6>
+                        </div>
+                        <div class="p-2">
+                            <p>{{ product.category }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h6>Price:</h6>
+                        </div>
+                        <div class="p-2">
+                            <h5>R {{ product.price }}</h5>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h6>Descirption:</h6>
+                        </div>
+                        <div class="p-2">
+                            <p>{{ product.descirption }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="pb-2"><h6>Colors</h6></div>
+                        {% for color in product.color.all %}
+                            <div class="badge bg-{{ color.color }}">_</div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <div class="pt-2"><h6>Size</h6></div>
+                        {% for size in product.size.all %}
+                            <div><p>{{ size.size }}</p></div>
+                        {% endfor %} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

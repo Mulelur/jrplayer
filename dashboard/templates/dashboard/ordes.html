@@ -1,0 +1,186 @@
+{% extends 'base(dashboard).html' %}
+{% block content %}
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Orders</h3>
+                        </div><!-- .nk-block-head-content -->
+                        <div class="nk-block-head-content">
+                            <div class="toggle-wrap nk-block-tools-toggle">
+                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                <div class="toggle-expand-content" data-content="pageMenu">
+                                    <ul class="nk-block-tools g-3">
+                                        <li>
+                                            <div class="form-control-wrap">
+                                                <form action="{% url 'dashboard:search' %}">
+                                                <div class="form-icon form-icon-right">
+                                                    <em class="icon ni ni-search"></em>
+                                                </div>
+                                                    <input name="q" class="form-control" id="default-04" placeholder="Quick search ...">
+                                                </form>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="drodown">
+                                                <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-toggle="dropdown">Status</a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <ul class="link-list-opt no-bdr">
+                                                        <li><a href="{% url 'dashboard:filater' q='On Hold' %}" ><span>On Hold</span></a></li>
+                                                        <li><a href="{% url 'dashboard:filater' q='Delivered' %}" name='delevired'><span>Delevired</span></a></li>
+                                                        <li><a href="{% url 'dashboard:filater' q='Not Delivered' %}" name='rejected'><span>Rejected</span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nk-block-tools-opt">
+                                            <a href="#" class="btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                                            <a href="#" data-toggle="modal" data-target="#add_order" class="btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Order</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- .nk-block-head-content -->
+                    </div><!-- .nk-block-between -->
+                </div><!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="nk-tb-list is-separate is-medium mb-3">
+                        <div class="nk-tb-item nk-tb-head">
+                            <div class="nk-tb-col nk-tb-col-check">
+                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                    <input type="checkbox" class="custom-control-input" id="uid">
+                                    <label class="custom-control-label" for="uid"></label>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col"><span>Order</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Date</span></div>
+                            <div class="nk-tb-col"><span class="d-none d-mb-block">Status</span></div>
+                            <div class="nk-tb-col tb-col-sm"><span>Customer</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Purchased</span></div>
+                            <div class="nk-tb-col"><span>Total</span></div>
+                            <div class="nk-tb-col nk-tb-col-tools">
+                                <ul class="nk-tb-actions gx-1 my-n1">
+                                    <li>
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-truck"></em><span>Mark as Delivered</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Orders</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- .nk-tb-item -->
+                        {% if page_obj %}
+                        {% for order in page_obj %}
+                        {% include 'dashboard/modals/orders_modals/update_status.html' %}
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col nk-tb-col-check">
+                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                    <input type="checkbox" class="custom-control-input" id="{{ order.id }}">
+                                    <label class="custom-control-label" for="{{ order.id }}"></label>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#{{ order.order_id }}</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">{{ order.timestamp }}</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="dot bg-warning d-mb-none"></span>
+                                <span class="badge badge-sm badge-dot has-bg badge-{% if order.delivered %}success{% else %}warning{% endif %} d-none d-mb-inline-flex">{{ order.status }}</span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <span class="tb-sub">{{ order.profile.user.username }}</span>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub text-primary">{{ order.purchesed_items.count }} Items</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-lead">R {{ order.total }}</span>
+                            </div>
+                            <div class="nk-tb-col nk-tb-col-tools">
+                                <ul class="nk-tb-actions gx-1">
+                                    <li class="nk-tb-action-hidden"><a href="#" class="btn btn-icon btn-trigger btn-tooltip" title="View Order" data-toggle="dropdown">
+                                            <em class="icon ni ni-eye"></em></a></li>
+                                    <li>
+                                        <div class="drodown mr-n1">
+                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#" data-toggle="modal" data-target="#update_status"><em class="icon ni ni-edit"></em><span>Update Status</span></a></li>
+                                                    <li><a href="{% url 'dashboard:mark_as_delivered' id=order.id %}"><em class="icon ni ni-truck"></em><span>Mark as Delivered</span></a></li>
+                                                    <li><a href="{% url 'dashboard:remove_order' id=order.id %}"><em class="icon ni ni-trash"></em><span>Remove Order</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- .nk-tb-item -->
+                        {% endfor %}
+                        {% else %}
+                        <div class="nk-content " >
+                            <p>No Orders</p>
+                        </div>
+                        {% endif %}
+
+                    </div><!-- .nk-tb-list -->
+                    {% if page_obj %}
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="nk-block-between-md g-3">
+                                <div class="g">
+                                    <nav>
+                                        <ul class="pagination">
+                                            {% if page_obj.has_previous %}
+                                            <li class="page-item disabled"><a class="page-link" href="?page=1">First</a></li>
+                                            <li class="page-item"><a class="page-link"  href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                                            {% endif %}
+                                                <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ page_obj.number }}<span class="sr-only">(current)</span></a></li> -->
+                                            {% for num in page_obj.paginator.page_range %}
+                                                {% if page_obj.number == num %}
+                                                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <!-- <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li> -->
+                                            {% if page_obj.has_next %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="g">
+                                    <div class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                        <div>Page</div>
+                                        <div>
+                                            <select class="form-select form-select-sm" data-search="on" data-dropdown="xs center">
+                                                {% for num in page_obj.paginator.page_range %}
+                                                <option value="page-{{ num }}"><a class="page-link" href="?page={{ num }}">{{ num }}</a></option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div>OF {{ page_obj.paginator.num_pages }}</div>
+                                    </div>
+                                </div><!-- .pagination-goto -->
+                            </div><!-- .nk-block-between -->
+                        </div>
+                    </div>
+                    {% endif %}
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'dashboard/modals/orders_modals/add_order.html' %}
+{% endblock %}

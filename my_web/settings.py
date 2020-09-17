@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'acconts.apps.AccontsConfig',
     'cart.apps.CartConfig',
-    'music.apps.MusicConfig'
+    'music.apps.MusicConfig',
+    'dashboard.apps.DashboardConfig'
 ]
 
 CKEDITOR_UPLOAD_PATH = 'upload/'

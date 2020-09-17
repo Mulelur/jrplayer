@@ -13,8 +13,7 @@ from home.models import Banner
 
 import datetime
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
-
+stripe.api_key = ''
 
 # def cart(request):
 #     template = 'cart/cart.html'
@@ -86,15 +85,14 @@ def order_details(request, **kwargs):
 
 def checkout(request, **kwargs):
     existing_order = get_user_pending_order(request)
-    publishKey = settings.STRIPE_PUBLISHABLE_KEY
     if request.method == 'POST':
         
         token = request.POST['stripeToken']
 
         charge = stripe.Charge.create(
             amount=100*existing_order.get_cart_total(),
-            currency='usd',
-            description='Example charge',
+            currency='zar',
+            description='buy',
             source=token,
         )
         return redirect(reverse('update_records', kwargs={'token': token}))
@@ -102,7 +100,6 @@ def checkout(request, **kwargs):
        
     context = {
         'order': existing_order,
-        'STRIPE_PUBLISHABLE_KEY': publishKey,
     }
 
     return render(request, 'cart/checkout.html', context)

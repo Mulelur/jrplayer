@@ -34,7 +34,7 @@
 						<td><a  href="{% url 'delete_item' item_id=item.id %}"><span><em style="font-size: 10px;" class="icon ni ni-cross"></em></span></a></td>
 						<td><a href="{% url 'shop-detail' slug=item.product.slug %}"><img width="50" height="60" src="{{ item.product.image.url }}" alt=""></a></td>
 						<td><a href="{% url 'shop-detail' slug=item.product.slug %}">{{ item.product.title }}</a></td>
-						<td><span class="amount">${{ item.product.price }}</span></td>
+						<td><span class="amount">R{{ item.product.price }}</span></td>
 						</tr>
 						{% empty %}
 							<tr>
@@ -64,17 +64,17 @@
 						<tbody>
 							<tr class="cart-subtotal">
 								<th>Subtotal</th>
-								<td data-title="Subtotal"><span class="amount">${{ order.get_cart_total }}</span></td>
+								<td data-title="Subtotal"><span class="amount">R{{ order.get_cart_total }}</span></td>
 							</tr>
 							<tr class="shipping">
 								<th>Shipping</th>
-								<td data-title="Shipping">Flat Rate: <span class="amount">$15</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]">
+								<td data-title="Shipping">Flat Rate: <span class="amount">R15</span> <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" data-index="0" name="shipping_method[0]">
 								</td>
 							</tr>
 
 							<tr class="order-total">
 								<th>Total</th>
-								<td data-title="Total"><strong><span class="amount">${{ order.get_cart_total_shipping }}</span></strong> </td>
+								<td data-title="Total"><strong><span class="amount">R{{ order.get_cart_total_shipping }}</span></strong> </td>
 							</tr>
 						</tbody>
 					</table>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shop
+from .models import *
 import admin_thumbnails
 
 @admin_thumbnails.thumbnail('image')
@@ -15,4 +15,5 @@ class ShopImageInline(admin.TabularInline):
 
 
 admin.site.register(Shop,ShopAdmin)
-
+admin.site.register(ColorVarient)
+admin.site.register(SizeVarient)
